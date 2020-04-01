@@ -59,8 +59,6 @@ void addFila()
     cout << "QUEUE > ";
     cin >> dadosFila;
 
-
-
     if (dadosFila != "remove" || dadosFila != "show" || dadosFila != "size" || dadosFila != "clear" || dadosFila != "exit")
     {
         fila.push(dadosFila);
