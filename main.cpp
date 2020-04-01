@@ -8,8 +8,7 @@ using namespace std;
 stack<string> pilha;
 queue<string> fila;
 
-string dadosPilha;
-string dadosFila;
+string dadosPilha, dadosFila;
 
 void addPilha()
 {
@@ -19,7 +18,7 @@ void addPilha()
     pilha.push(dadosPilha);
 }
 
-void removerDado()
+void removerPDado()
 {
     pilha.pop();
     cout << "[DESEMPILHADO] > " << pilha.top() << " na posicao " << pilha.size() << endl;
@@ -60,7 +59,10 @@ void addFila()
     cout << "QUEUE > ";
     cin >> dadosFila;
 
-    if (dadosFila != "remove" || dadosFila != "show" || dadosFila != "size" || dadosFila == "clear" || dadosFila == "exit") {
+
+
+    if (dadosFila != "remove" || dadosFila != "show" || dadosFila != "size" || dadosFila != "clear" || dadosFila != "exit")
+    {
         fila.push(dadosFila);
     }
     //Este if não está funcionando. A função dele é não permitir que seja adicionado um comando à fila.
@@ -101,7 +103,7 @@ int main()
 {
     int opt;
 
-    while (true)
+    while (opt != 0)
     {
         system("cls");
         cout << "[01] Stack\n[02] Queue\n";
@@ -112,13 +114,14 @@ int main()
         {
             system("cls");
             cout << "[COMANDOS P/ PILHA]\nremove - remover dado\ntopo   - exibir topo da pilha\nsize   - exibir tamanho\nclear  - esvaziar\nback   - voltar ao menu\n\n";
-            while (true)
+            dadosPilha = "join";
+            while (dadosPilha != "back")
             {
                 addPilha();
 
                 if (dadosPilha == "remove")
                 {
-                    removerDado();
+                    removerPDado();
                 }
                 else if (dadosPilha == "topo")
                 {
@@ -132,17 +135,14 @@ int main()
                 {
                     esvaziar();
                 }
-                else if (dadosPilha == "back")
-                {
-                    break;
-                }
             }
         }
         else if (opt == 2)
         {
             system("cls");
             cout << "[COMANDOS P/ FILA]\nremove - remover dado\nshow   - exibir primeiro dado da fila\nsize   - exibir tamanho\nclear  - esvaziar\nback   - voltar ao menu\n\n";
-            while (true)
+            dadosPilha = "join";
+            while (dadosFila != "back")
             {
                 addFila();
 
@@ -162,12 +162,9 @@ int main()
                 {
                     limparFila();
                 }
-                else if (dadosFila == "back")
-                {
-                    break;
-                }
             }
         }
     }
+    cout << "Saindo do programa...";
 }
 /* Este código possui bugs de filtragem de comandos, por exemplo, se escrever um comando, ele será adicionado à fila */
